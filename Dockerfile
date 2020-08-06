@@ -5,7 +5,4 @@ WORKDIR /codigo
 COPY requirements.txt /codigo/
 RUN pip install -r requirements.txt
 COPY . /codigo/
-CMD ["python","manage.py","makemigrations"]
-CMD ["python","manage.py","migrate"]
-CMD [“echo”, “Hello World”]
 CMD ["python","manage.py","runserver","0.0.0.0:8000"]
