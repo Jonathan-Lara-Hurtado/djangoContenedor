@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'pruebas',
         'USER':'admin',
         'PASSWORD':'12345',
-        'HOST':'172.30.233.157',
+        'HOST':'pruebasmysql.gedeon.svc',
         'PORT':'3306',
     }
 }
