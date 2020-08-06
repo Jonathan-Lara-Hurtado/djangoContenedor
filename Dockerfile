@@ -5,4 +5,5 @@ WORKDIR /codigo
 COPY requirements.txt /codigo/
 RUN pip install -r requirements.txt
 COPY . /codigo/
+RUN chmod 777 ejecutar.sh
 CMD ["./ejecutar.sh"]
