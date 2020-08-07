@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+
+echo OPENSHIFTDATADIR='/opt/app-root/src'
 echo $OPENSHIFTDATADIR
 
 echo "migrations"
