@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'pagina.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(OPENSHIFT_DATA_DIR, 'db.sqlite3'),
     }
 }
 
@@ -133,5 +133,5 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-os.path.join(DATA_DIR,"static"),
+os.path.join(OPENSHIFT_DATA_DIR,"static"),
 ]
