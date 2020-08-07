@@ -15,14 +15,14 @@ def index(request):
             return HttpResponse("que bien")
     else:
         form = UploadFileForm()
-    return render(request, 'almacenamiento/upload.html', {'form': form})
+    return render(request, 'subida/upload.html', {'form': form})
 
 
 class VistaSubidaModelos(RedirectView):
 
     def get(self, request, *args, **kwargs):
         form = FormSubida()
-        return render(request, 'almacenamiento/uploadmodelo.html', {'form': form})
+        return render(request, 'subida/uploadmodelo.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         print(request.POST,request.FILES)
