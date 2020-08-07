@@ -1,10 +1,6 @@
 #!/bin/bash
 
 
-
-echo OPENSHIFTDATADIR='/opt/app-root/src'
-echo $OPENSHIFTDATADIR
-
 echo "migrations"
 python manage.py makemigrations
 
