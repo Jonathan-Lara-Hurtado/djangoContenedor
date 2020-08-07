@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo $OPENSHIFT_DATA_DIR
+echo $OPENSHIFTDATADIR
 
 echo "migrations"
 python manage.py makemigrations
