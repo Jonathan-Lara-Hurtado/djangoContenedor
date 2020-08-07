@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "Iniciando proceso"
 
 echo "migrations"
 python manage.py makemigrations
