@@ -11,18 +11,14 @@ class Producto(models.Model):
     imagen = models.FileField(upload_to="almacenamiento/contenido/")
 
 
-
 def upload_to(instance, filename):
     return 'contenido/user_{0}/{1}'.format(instance.user.id, filename)
-
 
 
 class ProductosUser(models.Model):
     perfil = models.FileField(upload_to=upload_to)
     nonbre = models.CharField(max_length=30)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
-
-
 
 @receiver(models.signals.post_delete, sender=ProductosUser)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
@@ -53,4 +49,4 @@ def auto_delete_file_on_change(sender, instance, **kwargs):
     new_file = instance.file
     if not old_file == new_file:
         if os.path.isfile(old_file.path):
-            os.remo  path('almacenamiento/', include('almacenamiento.urls')),ve(old_file.path)
+            os.remove(old_file.path)
