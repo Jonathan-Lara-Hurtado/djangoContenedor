@@ -1,6 +1,4 @@
 #!/bin/bash
-echo "variable"
-export OPENSHIFTDATADIR="/opt/app-root/src/data"
 
 echo $OPENSHIFT_DATA_DIR
 
