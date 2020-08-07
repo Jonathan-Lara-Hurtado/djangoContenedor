@@ -1,0 +1,7 @@
+Crear un Enviroment en deploy de la aplicacion
+esta variable marca la ruta del storage creado
+en openshift
+ejemplo
+
+NAME                    VALUE
+OPENSHIFTDATADIR        /opt/app-root/src/data
