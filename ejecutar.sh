@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "variable"
-export OPENSHIFT_DATA_DIR = '/opt/app-root/src/data'
+export OPENSHIFT_DATA_DIR="/opt/app-root/src/data"
 
 echo "migrations"
 python manage.py makemigrations
