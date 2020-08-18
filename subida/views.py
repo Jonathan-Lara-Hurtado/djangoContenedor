@@ -4,7 +4,7 @@ from .forms import UploadFileForm, FormSubida
 from .somewhere import handle_uploaded_file
 from django.shortcuts import HttpResponse
 from django.views.generic import RedirectView
-
+from .models import Producto
 
 def index(request):
     if request.method == 'POST':
@@ -13,9 +13,12 @@ def index(request):
         if form.is_valid():
             handle_uploaded_file(request.FILES['archivo'].name,request.FILES['archivo'])
             return HttpResponse("que bien")
-    else:
+    elif request.method == 'GET':
         form = UploadFileForm()
-    return render(request, 'subida/upload.html', {'form': form})
+        productos =  Producto.objects.all()
+        print(productos)
+    return render(request, 'subida/upload.html', {'form': form,
+                                                  'productos':productos})
 
 
 class VistaSubidaModelos(RedirectView):

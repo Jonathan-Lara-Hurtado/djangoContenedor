@@ -4,4 +4,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'subida/estilo.css' %}">
 </head>
 
-<h1>Hola</h1>
+<body>
+
+
+{% for tmp in productos %}
+<p>{{tmp.titulo}}</p>
+<p> {{tmp.descripcion}}</p>
+
+<img src="{{tmp.imagen.url}}">
+{% endfor %}
+
+</body>

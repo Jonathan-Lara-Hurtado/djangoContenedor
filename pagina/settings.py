@@ -24,12 +24,16 @@ DATA_DIR = os.environ.get('OPENSHIFTDATADIR', BASE_DIR)
 SECRET_KEY = 'jtxul4#$8-&7*_=$xnq-dy9db*83a8%-_j)1z1hy&)$($p(xbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+OPENSHIFT = True
 
-ALLOWED_HOSTS = [
+if OPENSHIFT:
+    ALLOWED_HOSTS = [
     gethostname(),
     '*',
-]
+    ]
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,27 +81,26 @@ WSGI_APPLICATION = 'pagina.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pruebas',
-        'USER': 'admin',
-        'PASSWORD': '12345',
-        'HOST': 'pruebasmysql.gedeon.svc',
-        'PORT': '3306',
+if OPENSHIFT:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'pruebas',
+            'USER': 'admin',
+            'PASSWORD': '12345',
+            'HOST': 'pruebasmysql.gedeon.svc',
+            'PORT': '3306',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
-"""
-    'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pruebas',
-        'USER':'admin',
-        'PASSWORD':'12345',
-        'HOST':'pruebasmysql.gedeon.svc',
-        'PORT':'3306',
-"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -138,6 +141,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = DATA_DIR
+MEDIA_URL = '/media/'
 
 '''
 STATICFILES_DIRS = [
