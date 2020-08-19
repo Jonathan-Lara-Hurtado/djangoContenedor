@@ -57,9 +57,13 @@ class VistaDescarga(RedirectView):
                 response = HttpResponse(file.read(), content_type='pplication/vnd.ms-excel')
                 response['Content-Disposition']='inline; filename='+ os.path.basename(path)
                 return response
-            raise Http404
+            raise Http404("errro")
         else:
-            raise Http404
+            raise Http404("error")
 
     def post(self, request, *args, **kwargs):
         pass
+
+class VistaError(RedirectView):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("errooorrrrr")

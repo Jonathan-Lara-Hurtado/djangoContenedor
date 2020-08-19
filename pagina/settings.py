@@ -138,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static.txt/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(DATA_DIR, 'ArchivosEstaticos')
 MEDIA_ROOT = os.path.join(DATA_DIR,'ArchivosMedia')
@@ -150,3 +150,5 @@ STATICFILES_DIRS = [
 os.path.join(DATA_DIR,"static.txt"),
 ]
 '''
+
+handler404 = 'subida.views.VistaError'
