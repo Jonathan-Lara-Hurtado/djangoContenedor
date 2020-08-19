@@ -25,7 +25,7 @@ SECRET_KEY = 'jtxul4#$8-&7*_=$xnq-dy9db*83a8%-_j)1z1hy&)$($p(xbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-OPENSHIFT = True
+OPENSHIFT = False
 
 if OPENSHIFT:
     ALLOWED_HOSTS = [
@@ -50,7 +50,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -139,14 +138,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static.txt/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'ArchivosEstaticos')
+STATIC_ROOT = os.path.join(DATA_DIR, 'ArchivosEstaticos')
 MEDIA_ROOT = os.path.join(DATA_DIR,'ArchivosMedia')
 MEDIA_URL = '/ArchivosMedia/'
+DESCARGA_ROOT = os.path.join(DATA_DIR,'Descargas')
 
 '''
 STATICFILES_DIRS = [
-os.path.join(DATA_DIR,"static"),
+os.path.join(DATA_DIR,"static.txt"),
 ]
 '''

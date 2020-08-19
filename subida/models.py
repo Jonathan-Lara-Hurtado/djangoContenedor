@@ -3,16 +3,36 @@ from django.contrib.auth.models import User
 
 from django.dispatch import receiver
 # Create your models here.
-import  os
+import os
+from uuid import uuid4
+from pagina.settings import DESCARGA_ROOT
+from django.core.files.storage import FileSystemStorage
 
+fs = FileSystemStorage(location=DESCARGA_ROOT)
+
+def wrapper(instance, filename):
+    ext = filename.split('.')[-1]
+    # get filename
+    if instance.pk:
+        filename = '{}.{}'.format(instance.pk, ext)
+    else:
+        # set filename as random string
+        filename = '{}.{}'.format(uuid4().hex, ext)
+    # return the whole path to the file
+    return os.path.join(DESCARGA_ROOT, filename)
+
+def upload_to(instance, filename):
+    return 'contenido/user_{0}/{1}'.format(instance.titulo, filename)
+
+#https://docs.djangoproject.com/en/2.2/topics/files/#the-file-object
 class Producto(models.Model):
     titulo = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=30)
     imagen = models.FileField(upload_to="almacenamiento/contenido/")
+    descarga = models.FileField(storage=fs)
 
 
-def upload_to(instance, filename):
-    return 'contenido/user_{0}/{1}'.format(instance.user.id, filename)
+
 
 
 class ProductosUser(models.Model):

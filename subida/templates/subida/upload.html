@@ -6,12 +6,19 @@
 
 <body>
 
-
+{% if productos %}
 {% for tmp in productos %}
 <p>{{tmp.titulo}}</p>
 <p> {{tmp.descripcion}}</p>
 
 <img src="{{tmp.imagen.url}}">
+<a href="{% url 'Subida:descarga' tmp.pk%}">Descarga</a>
+{{tmp.descarga}}
+{{tmp.descarga.storage.location}}
 {% endfor %}
+{% else %}
+<p>no hay</p>
+{% endif %}
+
 
 </body>

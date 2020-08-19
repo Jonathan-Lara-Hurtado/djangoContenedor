@@ -7,5 +7,6 @@ app_name = 'Subida'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('modelos/', views.VistaSubidaModelos.as_view(), name='modelos')
+    path('modelos/', views.VistaSubidaModelos.as_view(), name='modelos'),
+    path('descarga/<int:ArticuloPk>', views.VistaDescarga.as_view(), name='descarga'),
 ]

@@ -1,11 +1,19 @@
 #!/bin/bash
-echo "Iniciando proceso"
 
-echo "migrations"
-python manage.py makemigrations
+ARGS=""
+ARGS="$ARGS --port 8080"
+ARGS="$ARGS --url-alias /static ArchivosEstaticos/"
+ARGS="$ARGS --url-alias /ArchivosMedia ArchivosMedia/"
 
-echo "migrate"
-python manage.py migrate
+exec mod_wsgi-express start-server $ARGS pagina/wsgi.py
 
-echo "runserver"
-python manage.py runserver 0.0.0.0:8000
+#echo "Iniciando proceso"
+
+#echo "migrations"
+#python manage.py makemigrations
+
+#echo "migrate"
+#python manage.py migrate
+
+#echo "runserver"
+#python manage.py runserver 0.0.0.0:8000
