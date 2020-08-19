@@ -2,3 +2,4 @@ django==2.2
 mysqlclient
 whitenoise
 mod-wsgi
+django-stdimage
