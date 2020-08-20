@@ -3,9 +3,9 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /codigo
 WORKDIR /codigo
 COPY requirements.txt /codigo/
-RUN pip install -r requirements.txt
 RUN apt-get update
 RUN apt-get install apache2
+RUN pip install -r requirements.txt
 COPY . /codigo/
 RUN chmod 777 subida/migrations/
 RUN chmod 777 ejecutar.sh
