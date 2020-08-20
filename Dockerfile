@@ -4,6 +4,7 @@ RUN mkdir /codigo
 WORKDIR /codigo
 COPY requirements.txt /codigo/
 RUN pip install -r requirements.txt
+RUN apt-get update
 COPY . /codigo/
 RUN chmod 777 subida/migrations/
 RUN chmod 777 ejecutar.sh
