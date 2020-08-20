@@ -11,4 +11,4 @@ class UploadFileForm(forms.Form):
 class FormSubida(ModelForm):
     class Meta:
         model = Producto
-        fields = ['titulo','descripcion','imagen','descarga']
+        fields = ['titulo','descripcion','imagen','imagenRedimencionada','descarga']

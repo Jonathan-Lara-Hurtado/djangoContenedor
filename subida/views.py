@@ -37,7 +37,7 @@ class VistaSubidaModelos(RedirectView):
             form.save()
             return HttpResponse("Agregado")
         else:
-            return HttpResponse("error")
+            return render(request, 'subida/uploadmodelo.html', {'form': form})
 
 
 

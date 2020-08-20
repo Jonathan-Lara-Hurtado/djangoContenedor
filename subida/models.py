@@ -7,6 +7,7 @@ import os
 from uuid import uuid4
 from pagina.settings import DESCARGA_ROOT
 from django.core.files.storage import FileSystemStorage
+from stdimage import StdImageField, JPEGField
 
 fs = FileSystemStorage(location=DESCARGA_ROOT)
 
@@ -29,6 +30,10 @@ class Producto(models.Model):
     titulo = models.CharField(max_length=30)
     descripcion = models.CharField(max_length=30)
     imagen = models.FileField(upload_to="almacenamiento/contenido/")
+    imagenRedimencionada = StdImageField(upload_to='comprimido',
+                                         variations = {'thumbnail': {'width': 100, 'height': 75}},
+                                         delete_orphans=True,
+                                         default=None)
     descarga = models.FileField(storage=fs)
 
 
