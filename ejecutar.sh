@@ -8,7 +8,7 @@ python manage.py makemigrations
 echo "migrate"
 python manage.py migrate
 
-python manage.py migrate collectstatic
+python manage.py collectstatic --noinput
 
 ARGS=""
 ARGS="$ARGS --log-to-terminal"
