@@ -25,7 +25,7 @@ SECRET_KEY = 'jtxul4#$8-&7*_=$xnq-dy9db*83a8%-_j)1z1hy&)$($p(xbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-OPENSHIFT = False
+OPENSHIFT = True
 
 if OPENSHIFT:
     ALLOWED_HOSTS = [
@@ -96,7 +96,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
         }
     }
 
