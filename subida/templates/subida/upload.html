@@ -11,10 +11,15 @@
 <p>{{tmp.titulo}}</p>
 <p> {{tmp.descripcion}}</p>
 
+<img src="{{tmp.imagenRedimencionada.thumbnail.url}}">
 <img src="{{tmp.imagen.url}}">
+<h2>Descargas</h2>
 <a href="{% url 'Subida:descarga' tmp.pk%}">Descarga</a>
-{{tmp.descarga}}
-{{tmp.descarga.storage.location}}
+
+<video src="{{tmp.imagen.url}}" autoplay poster="{{tmp.imagenRedimencionada.thumbnail.url}}">
+  Tu navegador no admite el elemento <code>video</code>.
+</video>
+
 {% endfor %}
 {% else %}
 <p>no hay</p>

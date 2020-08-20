@@ -31,7 +31,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=30)
     imagen = models.FileField(upload_to="almacenamiento/contenido/")
     imagenRedimencionada = StdImageField(upload_to='comprimido',
-                                         variations = {'thumbnail': {'width': 100, 'height': 75}},
+                                         variations = {'thumbnail': {'width': 224, 'height': 224,"crop": True}},
                                          delete_orphans=True,
                                          default=None)
     descarga = models.FileField(storage=fs)
