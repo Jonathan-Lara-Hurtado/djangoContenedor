@@ -9,6 +9,7 @@ from pagina.settings import DESCARGA_ROOT
 from django.core.files.storage import FileSystemStorage
 from stdimage import StdImageField, JPEGField
 
+
 fs = FileSystemStorage(location=DESCARGA_ROOT)
 
 def wrapper(instance, filename):
@@ -25,6 +26,7 @@ def wrapper(instance, filename):
 def upload_to(instance, filename):
     return 'contenido/user_{0}/{1}'.format(instance.titulo, filename)
 
+
 #https://docs.djangoproject.com/en/2.2/topics/files/#the-file-object
 class Producto(models.Model):
     titulo = models.CharField(max_length=30)
@@ -34,8 +36,7 @@ class Producto(models.Model):
                                          variations = {'thumbnail': {'width': 224, 'height': 224,"crop": True}},
                                          delete_orphans=True,
                                          default=None)
-    descarga = models.FileField(storage=fs)
-
+    descarga = models.FileField(upload_to=upload_to,storage=fs)
 
 
 

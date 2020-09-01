@@ -17,11 +17,14 @@ def index(request):
         form = UploadFileForm()
         try:
             productos =  Producto.objects.all()
+            unProducto = Producto.objects.get(pk=2)
             print(productos)
         except:
             productos = None
+            unProducto = None
     return render(request, 'subida/upload.html', {'form': form,
-                                                  'productos':productos})
+                                                  'productos':productos,
+                                                  'unProducto':unProducto})
 
 
 class VistaSubidaModelos(RedirectView):
@@ -45,6 +48,7 @@ class VistaDescarga(RedirectView):
 
     def get(self, request, *args, **kwargs):
         print(kwargs)
+        print(request.user)
         try:
             articulo = Producto.objects.get(pk=kwargs['ArticuloPk'])
         except:
@@ -67,3 +71,7 @@ class VistaDescarga(RedirectView):
 class VistaError(RedirectView):
     def get(self, request, *args, **kwargs):
         return HttpResponse("errooorrrrr")
+
+class VistaVideo(RedirectView):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'subida/videos.html', {'form':''})
