@@ -10,5 +10,4 @@ RUN pip install -r requirements.txt
 COPY . /codigo/
 RUN chmod 777 subida/migrations/
 RUN chmod 777 ejecutar.sh
-RUN chmod 777 /codigo/almacenamiento
 CMD ["./ejecutar.sh"]

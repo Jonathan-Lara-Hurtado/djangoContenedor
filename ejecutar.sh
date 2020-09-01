@@ -1,4 +1,7 @@
 #!/bin/bash
+
+chmod 777 almacenamiento
+
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py collectstatic --noinput -c
