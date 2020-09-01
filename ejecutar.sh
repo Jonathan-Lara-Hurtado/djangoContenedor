@@ -1,10 +1,8 @@
 #!/bin/bash
-
-
-python3 manage.py makemigrations
-python3 manage.py migrate
-#python3 manage.py collectstatic --noinput -c
-python3 manage.py collectstatic --noinput
+python manage.py makemigrations
+python manage.py migrate
+python manage.py collectstatic --noinput -c
+python manage.py collectstatic --noinput
 
 REDHATOPENSHIFT=true
 ARGS=""
