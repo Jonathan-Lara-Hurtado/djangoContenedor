@@ -25,7 +25,7 @@ SECRET_KEY = 'jtxul4#$8-&7*_=$xnq-dy9db*83a8%-_j)1z1hy&)$($p(xbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-OPENSHIFT = False
+OPENSHIFT = True
 
 if OPENSHIFT:
     ALLOWED_HOSTS = [
@@ -89,7 +89,7 @@ if OPENSHIFT:
             'NAME': 'pruebas',
             'USER': 'admin',
             'PASSWORD': '12345',
-            'HOST': 'pruebasmysql.gedeon.svc',
+            'HOST': 'mysql.pruebaspython.svc.cluster.local',
             'PORT': '3306',
         }
     }
